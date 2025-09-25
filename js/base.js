@@ -57,7 +57,7 @@ function w2s(x, y) {
     return [sx, sy];
 }
 
-function drawPath(points, strokeStyle, fill = false) {
+function drawPath(points, strokeStyle) {
     if (points.length === 0) return;
     ctx.beginPath();
     const [x0, y0] = w2s(points[0][0], points[0][1]);
@@ -69,12 +69,6 @@ function drawPath(points, strokeStyle, fill = false) {
     ctx.strokeStyle = strokeStyle;
     ctx.lineWidth = 2;
     ctx.stroke();
-    if (fill) {
-        ctx.fillStyle = strokeStyle;
-        ctx.globalAlpha = 0.08;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-    }
 }
 
 function drawBoat(x, y, size = 15, color = 'lime') {
