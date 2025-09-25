@@ -1,6 +1,6 @@
 // --- Simulation params ---
-let P = 15, I = 1, D = 300;
-let STATIC_FORCE = -100;
+let P = 40, I = 0, D = 300;
+let STATIC_FORCE = -50;
 const FPS = 60; // simulation framerate target
 const renderDt = 1 / FPS;
 const world = { xMin: -100, xMax: 100, yMin: -5, yMax: 25 };
