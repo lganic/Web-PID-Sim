@@ -92,6 +92,43 @@ function drawBoat(x, y, size = 15, color = 'lime') {
     drawPath(pts, color, false);
 }
 
+function compensate_sin(x) {
+    // When given the output of a sine wave, return a new value, which will correct the distribution so that it is uniform.
+
+    let correction = Math.PI * x / (2 * Math.asin(x));
+
+    return x / correction;
+}
+
+function drawWind(t, k, vel) {
+
+    const M_V_SCALE = 3;
+    const W_L_SCALE = 1;
+    const rect = scene.getBoundingClientRect();
+    const W = rect.width, H = rect.height;
+
+    t_floor = Math.floor(t)
+
+    t_frac = t - t_floor
+
+    w_scaler = 4 * t_frac * (1 - t_frac) // Smooth animation so wind isn't obvious when it spawns in
+
+    x = Math.abs(Math.cos(k * t_floor));
+    y = Math.abs(Math.sin(2 * k * t_floor)); // Eyeballin this, the 2 isn't significant, it can be any number other than 1
+
+    x = W * compensate_sin(x);
+    y = H * compensate_sin(y);
+
+    x_offset = M_V_SCALE * vel * t_frac;
+
+    ctx.beginPath();
+    ctx.moveTo(x + x_offset, y);
+    ctx.lineTo(x + x_offset + w_scaler * (vel * W_L_SCALE), y);
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
+
 let zoomFactor = 1;
 document.getElementById('zoomSlider').addEventListener('input', e => {
     zoomFactor = parseFloat(e.target.value);
@@ -175,6 +212,16 @@ function loop(now) {
     const targetPos = expectedFunction(t + randomStartTime);
     drawBoat(targetPos, 0, 15, 'red');
     drawBoat(currentState.position, 0, 15, 'lime');
+
+    drawWind(t + .1, 8, STATIC_FORCE)
+    drawWind(t + .2, 9, STATIC_FORCE)
+    drawWind(t + .3, 10, STATIC_FORCE)
+    drawWind(t + .4, 11, STATIC_FORCE)
+    drawWind(t + .5, 12, STATIC_FORCE)
+    drawWind(t + .6, 13, STATIC_FORCE)
+    drawWind(t + .7, 14, STATIC_FORCE)
+    drawWind(t + .8, 15, STATIC_FORCE)
+    drawWind(t + .9, 16, STATIC_FORCE)
 
     // PID
     const delta = targetPos - currentState.position;
