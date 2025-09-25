@@ -108,7 +108,7 @@ function drawWind(t, k, vel) {
     w_scaler = 4 * t_frac * (1 - t_frac) // Smooth animation so wind isn't obvious when it spawns in
 
     x = Math.abs(Math.cos(k * t_floor));
-    y = Math.abs(Math.sin(2 * k * t_floor)); // Eyeballin this, the 2 isn't significant, it can be any number other than 1
+    y = Math.abs(Math.sin((k * k) * t_floor));
 
     x = W * compensate_sin(x);
     y = H * compensate_sin(y);
