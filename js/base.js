@@ -9,7 +9,7 @@ const world = { xMin: -100, xMax: 100, yMin: -5, yMax: 25 };
 let A = 80; // amplitude
 let T = 10; // period seconds
 
-let randomStartTime = 15000 * Math.random();
+let randomStartTime = 2 * Math.PI * Math.random();
 
 function expectedFunction(t) {
     return A * Math.sin(2 * Math.PI * t / T);
@@ -155,7 +155,7 @@ function reset() {
     frameIndex = 0;
     currentState = new State(renderDt);
     runningTotalError = 0;
-    randomStartTime = 15000 * Math.random();
+    randomStartTime = 2 * Math.PI * Math.random();
     lastDelta = null;
     deltaChart.data.datasets[0].data = [];
     posChart.data.datasets[0].data = [];
