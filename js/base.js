@@ -289,6 +289,7 @@ function loop(now) {
     document.getElementById('deltaReadout').textContent = delta.toFixed(2);
     document.getElementById('posReadout').textContent = currentState.position.toFixed(2);
     document.getElementById('tgtReadout').textContent = targetPos.toFixed(2);
+    document.getElementById('outReadout').textContent = output.toFixed(2);
 
     requestAnimationFrame(loop);
 }
