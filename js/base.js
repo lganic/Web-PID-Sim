@@ -204,7 +204,7 @@ function loop(now) {
 
     // target & current positions
     const targetPos = expectedFunction(t + randomStartTime);
-    drawBoat(targetPos, 0, 15, 'red');
+    drawBoat(targetPos, 0, 13, 'red');
     drawBoat(currentState.position, 0, 15, 'lime');
 
     drawWind(t + .1, 8, STATIC_FORCE)
@@ -290,7 +290,7 @@ function warmup() {
     const t = (performance.now() - warmupStart) / 1000;
     clearScene();
     const pos = expectedFunction(randomStartTime);
-    drawBoat(pos, 0, 15, 'red');
+    drawBoat(pos, 0, 13, 'red');
     drawBoat(currentState.position, 0, 15, 'lime');
     if (t < 1) { requestAnimationFrame(warmup); }
     else { requestAnimationFrame(loop); }
