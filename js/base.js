@@ -194,6 +194,14 @@ function reset() {
     deltaChart.update(); posChart.update();
 }
 
+function zerowind() {
+    STATIC_FORCE = 0;
+    Wslider.value = 0;
+
+    const out = document.getElementById("Wval");
+    out.innerHTML = "0.00";
+}
+
 function loop(now) {
     if (!running) { requestAnimationFrame(loop); return; }
 
@@ -323,6 +331,7 @@ Aslider.addEventListener('input', () => { A = parseFloat(Aslider.value); Aval.te
 Tslider.addEventListener('input', () => { T = parseFloat(Tslider.value); Tval.textContent = Tslider.value; });
 
 document.getElementById('reset').addEventListener('click', reset);
+document.getElementById('zerowind').addEventListener('click', zerowind);
 document.getElementById('pause').addEventListener('click', () => {
     running = !running;
     document.getElementById('pause').textContent = running ? 'Pause' : 'Resume';
