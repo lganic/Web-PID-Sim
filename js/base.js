@@ -158,7 +158,7 @@ const deltaChart = new Chart(deltaCtx, {
         responsive: true,
         maintainAspectRatio: true,
         scales: { x: { type: 'linear', title: { display: true, text: 'Time (s)' } }, y: { min: -120, max: 120, title: { display: true, text: 'Delta' } } },
-        plugins: { legend: { display: false } }
+        plugins: { legend: { display: true} }
     }
 });
 
